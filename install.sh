@@ -132,6 +132,7 @@ adapter_content() {
       printf -- '---\nname: sly.%s\ndescription: %s\n---\n\n%s\n' "$name" "$(quote "$desc")" "$instr"
       ;;
     claude)
+      # shellcheck disable=SC2016
       printf -- '---\ndescription: %s\n---\n\n%s\n\nUser input: $ARGUMENTS\n' "$(quote "$desc")" "$instr"
       ;;
     copilot)

@@ -25,7 +25,7 @@ new_project() { mktemp -d; }
 
 sly() { bash "$INSTALL" --source "$ROOT" "$@" >/dev/null; }
 
-COMMANDS="$(cd "$ROOT/core/commands" && ls -- *.md | sed 's/\.md$//')"
+COMMANDS="$(for f in "$ROOT"/core/commands/*.md; do basename "$f" .md; done)"
 
 echo "fresh install with every IDE"
 P="$(new_project)"
