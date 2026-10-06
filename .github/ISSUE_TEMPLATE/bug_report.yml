@@ -1,0 +1,84 @@
+name: 🐛 Bug report
+description: Create a report to help us improve Sly
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you so much for taking the time to fill out this bug report! Sly 🦊 depends on efforts like this to keep improving so we are deeply grateful for your contribution.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description:
+        What version of Sly showed this misbehavior? (see the `version=` line
+        in `.sly/.manifest`, e.g. v0.1.0)
+    validations:
+      required: true
+  - type: dropdown
+    id: ide
+    attributes:
+      label: IDE / Agent
+      multiple: true
+      options:
+        - Antigravity
+        - Claude Code
+        - VS Code (GitHub Copilot)
+        - Cursor
+        - Gemini CLI
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      description: Which AI model was the agent using (if relevant)?
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description:
+        A clear and concise description of what was expected instead of what
+        happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description:
+        How can the bug be reproduced? Please provide the commands you ran (e.g.
+        the install command or the `/sly.*` command) and what you answered.
+      placeholder: |
+        1. Run '/sly.plan' for an approved goal
+        2. See error
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output or agent transcript
+      description:
+        Please copy and paste any relevant installer output or agent messages.
+        This will be automatically formatted into code, so no need for
+        backticks.
+      render: shell

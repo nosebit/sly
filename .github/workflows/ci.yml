@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run ShellCheck
+        run: shellcheck install.sh tests/*.sh
+
+  test:
+    name: Installer Tests (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        # macOS ships bash 3.2, which install.sh must keep supporting.
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run installer tests
+        run: ./tests/install_test.sh
